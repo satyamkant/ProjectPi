@@ -2,15 +2,13 @@ import axios from 'axios';
 
 const SubmitCode = async (code, language, input) => {
   // Create the JSON object
-  const requestData = {
-    "code": code,
-    "language": language,
-    "input": input
-  };
+    const requestData = new FormData();
+    requestData.append("code", code);
+    requestData.append("language", language);
+    requestData.append("input", input);
 
   try {
       // Send POST request with the JSON body
-      console.log(requestData);
     const response = await axios.post('http://localhost:8081/api/code/execute', requestData, {
       headers: {
         'Content-Type': 'application/json'
@@ -26,3 +24,18 @@ const SubmitCode = async (code, language, input) => {
 };
 
 export default SubmitCode;
+
+// export async function addRoomApiCall(photo, roomType, roomPrice) {
+//   const formData = new FormData();
+//   formData.append("photo", photo)
+//   formData.append("roomType", roomType)
+//   formData.append("roomPrice", roomPrice)
+ 
+//   const response = await api.post("/rooms/add/new-room", formData, { headers: getHeaderMultipart() })
+//   if (response.status === 201) {
+//     return true;
+//   } else {
+//     return false
+//   }
+ 
+// }

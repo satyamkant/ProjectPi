@@ -66,7 +66,7 @@ const OnlineCompiler = () => {
       </div>
       <div className="output-container">
         <label>Output</label>
-        <textarea value={output} readOnly />
+        <textarea value={output.output} readOnly />
       </div>
     </div>
   );
