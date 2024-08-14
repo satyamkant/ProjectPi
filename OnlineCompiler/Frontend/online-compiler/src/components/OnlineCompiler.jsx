@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
 import "../css/OnlineCompiler.css";
+import SubmitCode from "../js/SubmitCode";
 
 const OnlineCompiler = () => {
   const [code, setCode] = useState("// Write your code here...");
@@ -12,9 +13,12 @@ const OnlineCompiler = () => {
     setOutput("Sample Output");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event) => {
     // Logic for submitting the code goes here
-    alert("Code submitted!");
+    event.preventDefault();
+    const executionResult = await SubmitCode(code, "cpp", input);
+    setOutput(executionResult);
+    // alert("Code submitted!");ß
   };
 
   const handleInputChange = (index, value) => {
