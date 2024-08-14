@@ -26,7 +26,7 @@ spring:
 #        health-check-interval: 10s  # Health check interval
 
 server:
-  port: 9000
+  port: 1020
 
 logging:
   level:
