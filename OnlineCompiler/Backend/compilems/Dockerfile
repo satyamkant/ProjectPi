@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:17-jdk
 
 # Install g++ and any other necessary tools, then remove the package manager cache
 RUN apt-get update && apt-get install -y g++ \
