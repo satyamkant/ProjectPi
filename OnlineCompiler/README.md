@@ -7,6 +7,6 @@ visit:- https://compiler.satyampi.uk
 
 Sample code :-
 
-#include <bits/stdc++.h> \n
-using namespace std; \n
-int main() { cout << "Hehehehsdfase "<< endl; return 0; }
+> #include <bits/stdc++.h>
+> using namespace std; \n
+> int main() { cout << "Hehehehsdfase "<< endl; return 0; }
