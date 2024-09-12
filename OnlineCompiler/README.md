@@ -10,7 +10,6 @@ Sample code :-
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-
     cout << "Hehehehsdfase "<< endl;
     return 0;
 }
