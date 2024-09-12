@@ -9,6 +9,7 @@ const SubmitCode = async (code, language, input) => {
 
   try {
       // Send POST request with the JSON body
+    console.log("sending code")
     const response = await axios.post('http://localhost:1020/api/code/execute', requestData, {
       headers: {
         'Content-Type': 'application/json'
@@ -16,6 +17,7 @@ const SubmitCode = async (code, language, input) => {
     });
 
     // Return the response data
+    console.log(response)
     return response.data;
   } catch (error) {
     console.error('Error executing code:', error);
