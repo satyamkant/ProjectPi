@@ -8,14 +8,14 @@ import uk.satyampi.onlinecompiler.compilems.service.CodeExecutionService;
 
 @RestController
 @RequestMapping("/api/code")
-
+@CrossOrigin(origins = "https://www.satyampi.uk")
 public class CodeExecutionController {
 
     @Autowired
     private CodeExecutionService codeExecutionService;
 
     @PostMapping("/execute")
-    @CrossOrigin(origins = "*")
+    
     public ExecutionResult executeCode(@RequestBody CodeExecutionRequest request) {
         return codeExecutionService.executeCode(request.getCode(), request.getLanguage(), request.getInput());
     }
