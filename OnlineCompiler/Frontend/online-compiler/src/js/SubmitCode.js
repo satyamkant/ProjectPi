@@ -10,7 +10,7 @@ const SubmitCode = async (code, language, input) => {
   try {
       // Send POST request with the JSON body
     console.log("sending code")
-    const response = await axios.post('http://localhost:1020/api/code/execute', requestData, {
+    const response = await axios.post('https://www.satyampi.uk/api/code/execute', requestData, {
       headers: {
         'Content-Type': 'application/json'
       }
