@@ -8,7 +8,7 @@ import uk.satyampi.onlinecompiler.compilems.service.CodeExecutionService;
 
 @RestController
 @RequestMapping("/api/code")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class CodeExecutionController {
 
     @Autowired
