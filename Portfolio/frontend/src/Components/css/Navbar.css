@@ -1,0 +1,20 @@
+.navbar {
+    background-color: #9DB2BF;
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.nav-link {
+    border-radius: 5px;
+    padding: 8px 12px; /* Add padding for a button-like effect */
+    color: #DDE6ED;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #526D82;
+    text-decoration: none;
+    color: #DDE6ED; /* Optional: keep text color consistent on hover */
+    border-radius: 5px;
+}

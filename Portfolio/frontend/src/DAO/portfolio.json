@@ -1,0 +1,19 @@
+{
+  "aboutMe": [
+    { "text": "I’m ", "bold": false },
+    { "text": "Satyam Kant", "bold": true },
+    { "text": ", a ", "bold": false },
+    { "text": "Specialist Programmer", "bold": true },
+    { "text": " at Infosys, skilled in ", "bold": false },
+    { "text": "Java", "bold": true },
+    { "text": ", ", "bold": false },
+    { "text": "Spring Boot", "bold": true },
+    { "text": ", and ", "bold": false },
+    { "text": "microservice development", "bold": true },
+    { "text": ". I’ve built impactful projects like an ", "bold": false },
+    { "text": "Online Compiler", "bold": true },
+    { "text": " and shared my expertise through published articles. With achievements in ", "bold": false },
+    { "text": "coding competitions", "bold": true },
+    { "text": " and a strong problem-solving background, I’m driven to create scalable and efficient software solutions.", "bold": false }
+  ]
+}
