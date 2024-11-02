@@ -1,4 +1,4 @@
-import logo from "../resources/Images/favicon.ico"
+import logo from "../Resources/Images/favicon.ico"
 import "./css/Navbar.css"
 
 function Navbar(){

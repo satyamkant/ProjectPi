@@ -1,6 +1,6 @@
 import "./css/Home.css";
 import data from "../DAO/portfolio.json"
-import programmer from "../resources/Images/programmer.svg"
+import programmer from "../Resources/Images/programmer.svg"
 
 function Home() {
     return (
