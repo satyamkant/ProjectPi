@@ -12,7 +12,7 @@ function App() {
         <Navbar/>
         <Home/>
         <Resume/>
-         <Footer/>
+        <Footer/>
     </div>
   );
 }

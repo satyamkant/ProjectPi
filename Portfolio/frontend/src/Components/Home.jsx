@@ -8,7 +8,7 @@ function Home() {
             <div className="container p-5 text-center text-md-start" >
                 <div className="d-md-flex">
                     <div className="me-5">
-                        <h1> Hi There</h1>
+                        <h1 style = {{"color": "#5C5470"}}> Hi There</h1>
                         <p className="lead">
                             {data.aboutMe.map((segment, index) =>
                                 segment.bold ? <strong key={index}>{segment.text}</strong> : segment.text

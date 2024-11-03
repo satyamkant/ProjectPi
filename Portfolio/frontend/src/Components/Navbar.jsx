@@ -3,8 +3,8 @@ import "./css/Navbar.css"
 
 function Navbar(){
     return (
-        <nav className="navbar navbar-expand-md">
-            <div className="container">
+        <nav className="navbar navbar-dark navbar-expand-md">
+            <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <img src = {logo} alt="satyampi logo" width="30" height="24"/> SatyamPi
                 </a>
