@@ -1,8 +1,8 @@
 import "./css/Card.css"
 
-function Card(props) {
+function Card(props){
     const title = props.title;
-    const description = props.description;
+    const data = props.data;
     const featured = props.featured;
 
     return (
@@ -11,7 +11,11 @@ function Card(props) {
                 <h5 className="card-header">{featured}</h5>
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
-                    <p className="card-text">{description}</p>
+                    <p className="lead">
+                        {data.map((segment, index) =>
+                            segment.bold ? <strong key={index}>{segment.text}</strong> : segment.text
+                        )}
+                    </p>
                 </div>
             </div>
         </div>
