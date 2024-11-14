@@ -7,9 +7,9 @@ function Navbar(){
         <header className="md-header">
             <nav className="navbar navbar-dark navbar-expand-md">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <Link className="navbar-brand" to="/home">
                         <img src = {logo} alt="satyampi logo" width="30" height="24"/> SatyamPi
-                    </a>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
