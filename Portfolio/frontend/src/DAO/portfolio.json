@@ -1,4 +1,10 @@
 {
+  "topics":[
+    { "name": "Intro", "link": "/intro" },
+    { "name": "Codeforces", "link": "/codeforces" },
+    { "name": "Codechef", "link": "/codechef" },
+    { "name": "Algorithms Library", "link": "/algorithms" }
+  ],
   "aboutMe": [
     { "text": "I'm ", "bold": false },
     { "text": "Satyam Kant", "bold": true },
