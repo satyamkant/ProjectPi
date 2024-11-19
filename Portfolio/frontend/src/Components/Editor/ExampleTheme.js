@@ -1,3 +1,4 @@
+/// import this these in lexical composer
 const exampleTheme = {
   ltr: "ltr",
   rtl: "rtl",

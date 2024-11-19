@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
-import BlogHome from "./Components/BlogHome";
+import BlogHome from "./Components/Blog/BlogHome";
 
 function App() {
   return (

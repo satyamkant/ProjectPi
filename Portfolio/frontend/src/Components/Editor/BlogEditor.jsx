@@ -13,8 +13,9 @@ import {LexicalErrorBoundary} from "@lexical/react/LexicalErrorBoundary";
 import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
 import {useEffect, useState} from "react";
 
-import parseEditorStateToHtml from "./parseEditorStateToHtml";
+
 import {HistoryPlugin} from "@lexical/react/LexicalHistoryPlugin";
+import parseEditorStateToHtml from "./parseEditorStateToHtml";
 
 function OnChangePlugin({ onChange }) {
     const [editor] = useLexicalComposerContext();
@@ -37,7 +38,7 @@ export default function BlogEditor() {
     useEffect(() => {
         const loadEditorData = async () => {
             try {
-                const editorDataModule = await import('../DAO/editorData.json');
+                const editorDataModule = await import('../../DAO/editorData.json');
                 const editorData = editorDataModule.default;
 
                 editor.update(() => {

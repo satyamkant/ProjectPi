@@ -1,12 +1,13 @@
 import "./css/BlogPage.css"
-import BlogEditor from "./BlogEditor";
-import ExampleTheme from "./themes/ExampleTheme";
+
+import ExampleTheme from "../Editor/ExampleTheme";
 import {HeadingNode, QuoteNode} from "@lexical/rich-text";
 import {ListItemNode, ListNode} from "@lexical/list";
 import {CodeHighlightNode, CodeNode} from "@lexical/code";
 import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {AutoLinkNode, LinkNode} from "@lexical/link";
 import {LexicalComposer} from "@lexical/react/LexicalComposer";
+import BlogEditor from "../Editor/BlogEditor";
 
 
 

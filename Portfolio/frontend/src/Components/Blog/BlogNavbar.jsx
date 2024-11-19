@@ -1,6 +1,6 @@
 import "./css/BlogNavbar.css"
 import {Link} from "react-router-dom";
-import data from "../DAO/portfolio.json"
+import data from "../../DAO/portfolio.json"
 
 function BlogNavbar() {
     return (

@@ -1,7 +1,7 @@
 import { $generateHtmlFromNodes } from "@lexical/html";
 import { createEditor } from "lexical";
 import postProcessHtml from "./PostProcessHtml";
-import ExampleTheme from "./themes/ExampleTheme";
+import ExampleTheme from "./ExampleTheme";
 import {HeadingNode, QuoteNode} from "@lexical/rich-text";
 import {ListItemNode, ListNode} from "@lexical/list";
 import {CodeHighlightNode, CodeNode} from "@lexical/code";
