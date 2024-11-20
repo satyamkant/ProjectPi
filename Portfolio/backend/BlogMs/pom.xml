@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>uk.satyampi</groupId>
-	<artifactId>homems</artifactId>
+	<artifactId>BlogMs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>homems</name>
-	<description>Home microservice for home page</description>
+	<name>BlogMs</name>
+	<description>Blog microservice</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -39,20 +39,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>annotationProcessor</scope>
 		</dependency>
 	</dependencies>
 
