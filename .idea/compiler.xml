@@ -8,14 +8,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="compilems" />
-        <module name="BlogMs" />
+        <module name="UserMs" />
         <module name="homems" />
+        <module name="BlogMs" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BlogMs" options="-parameters" />
+      <module name="UserMs" options="-parameters" />
       <module name="compilems" options="-parameters" />
       <module name="homems" options="-parameters" />
     </option>
