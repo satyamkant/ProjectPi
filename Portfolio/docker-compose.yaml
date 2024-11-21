@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  consul:
+    image: hashicorp/consul:latest
+    container_name: consul
+    ports:
+      - "8500:8500" # Expose the Consul UI on port 8500
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0  # Bind to eth0 for proper networking
+      - CONSUL_HTTP_ADDR=http://0.0.0.0:8500  # Listen on all interfaces
+      - CONSUL_UI=true  # Enable the UI
+    volumes:
+      - consul_data:/consul/data  # Persist data
+    networks:
+      - consul_network
+    restart: always
+
+volumes:
+  consul_data:
+
+networks:
+  consul_network:
+    driver: bridge

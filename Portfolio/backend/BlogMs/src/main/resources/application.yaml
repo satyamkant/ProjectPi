@@ -1,0 +1,41 @@
+Server:
+  port: 2000
+spring:
+  application:
+    name: BlogMs
+  datasource:
+    url: jdbc:postgresql://casalocal.com:5432/blogms # Replace <HOST>, <PORT>, and <DATABASE_NAME> with your details
+    username: postgres                                 # Replace <USERNAME> with your PostgreSQL username
+    password: Satya@1009                               # Replace <PASSWORD> with your PostgreSQL password
+    driver-class-name: org.postgresql.Driver             # PostgreSQL Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update                                   # Options: validate | update | create | create-drop
+    show-sql: true                                       # Logs SQL queries to the console
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect # Hibernate dialect for PostgreSQL
+
+  sql:
+    init:
+      mode: always                                       # Always run schema.sql or data.sql scripts (if available)
+
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: host.docker.internal
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG                                       # Log SQL queries (optional)
+        type: trace
+
+Service:
+  EMPTY_LIST: Database table is empty.
+General:
+  EXCEPTION_MESSAGE: Something went wrong check logs.
