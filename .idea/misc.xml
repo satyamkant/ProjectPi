@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/Portfolio/backend/homems/pom.xml" />
         <option value="$PROJECT_DIR$/Portfolio/backend/BlogMs/pom.xml" />
         <option value="$PROJECT_DIR$/Portfolio/backend/UserMs/pom.xml" />
+        <option value="$PROJECT_DIR$/Portfolio/backend/securityms/pom.xml" />
       </list>
     </option>
   </component>

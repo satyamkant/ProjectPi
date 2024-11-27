@@ -1,4 +1,4 @@
-package uk.satyampi.BlogMs.enums;
+package uk.satyampi.UserMs.enums;
 
 public enum UserRole {
     ADMIN,

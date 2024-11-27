@@ -1,10 +1,10 @@
-package uk.satyampi.securityms;
+package uk.satyampi.SecurityMs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SecuritymsApplicationTests {
+class SecurityMsApplicationTests {
 
 	@Test
 	void contextLoads() {

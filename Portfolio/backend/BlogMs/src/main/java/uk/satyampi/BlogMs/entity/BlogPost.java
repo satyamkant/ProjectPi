@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import uk.satyampi.BlogMs.enums.BlogType;
 
 import java.time.LocalDateTime;
 
@@ -20,8 +21,9 @@ public class BlogPost {
     @Column(name = "Blog_Id")
     private Long blogId;
 
-    @Column(name = "Type", nullable = false)
-    private String type;
+    @Column(name = "Blog_Type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private BlogType blogType;
 
     @Column(name = "Title", nullable = false)
     private String title;

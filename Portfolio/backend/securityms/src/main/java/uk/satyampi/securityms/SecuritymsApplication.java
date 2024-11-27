@@ -1,13 +1,13 @@
-package uk.satyampi.securityms;
+package uk.satyampi.SecurityMs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SecuritymsApplication {
+public class SecurityMsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SecuritymsApplication.class, args);
+		SpringApplication.run(SecurityMsApplication.class, args);
 	}
 
 }
