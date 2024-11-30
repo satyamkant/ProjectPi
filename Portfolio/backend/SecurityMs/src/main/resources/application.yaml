@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: SecurityMs
+  config:
+    import: consul://casalocal.com:8500/SecurityMs-Dev/application # Specifies that configuration should be loaded from Consul
+  cloud:
+    consul:
+      discovery:
+        hostname: BlogSecurityMs
+        port: 2000
+      config:
+        enabled: true  # Enable Consul configuration management
