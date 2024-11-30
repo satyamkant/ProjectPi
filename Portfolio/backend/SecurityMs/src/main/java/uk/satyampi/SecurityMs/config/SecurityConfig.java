@@ -47,6 +47,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request ->request
                         .requestMatchers("/security/register","/actuator/health","/security/login")
+//                        .requestMatchers(new AntPathRequestMatcher("/security/login"))
                         .permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/security/admin"))
                         .hasRole("ADMIN")
