@@ -4,9 +4,6 @@ FROM openjdk:17-jdk-slim as build
 # Set working directory in the container
 WORKDIR /app
 
-# Set working directory in the container
-WORKDIR /app
-
 # Copy the built jar file from the Jenkins build step
 COPY target/UserMs-0.0.1-SNAPSHOT.jar /app/UserMs.jar
 
