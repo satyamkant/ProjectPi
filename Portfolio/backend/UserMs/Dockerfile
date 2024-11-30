@@ -17,7 +17,7 @@ COPY src ./src
 RUN ./mvnw clean package
 
 # Use a minimal JRE image for running the application
-FROM openjdk:23-jre-slim
+FROM openjdk:17-jdk-slim
 
 # Set the working directory in the container
 WORKDIR /app
