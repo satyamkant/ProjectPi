@@ -50,6 +50,8 @@ public class SecurityConfig {
                         .permitAll()
                         .requestMatchers("/security/register")
                         .permitAll()
+                        .requestMatchers("/actuator/health")
+                        .permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/security/admin"))
                         .hasRole("ADMIN")
                         .anyRequest()
