@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Set your Docker image name and optionally, your Docker registry
-        DOCKER_IMAGE = 'satyamkant/Blog-frontend:latest'
+        DOCKER_IMAGE = 'satyamkant/blog-frontend:latest'
         // Uncomment and set if you are pushing to a Docker registry
         // DOCKER_REGISTRY = "your-docker-registry"
     }
