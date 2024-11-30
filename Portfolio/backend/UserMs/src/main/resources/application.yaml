@@ -6,7 +6,7 @@ spring:
   cloud:
     consul:
       discovery:
-        hostname: UserMs
+        hostname: BlogUserMs
         port: 2003
       config:
         enabled: true  # Enable Consul configuration management
