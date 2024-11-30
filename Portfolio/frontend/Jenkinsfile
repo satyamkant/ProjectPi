@@ -65,9 +65,9 @@ pipeline {
                 // Stop any running container with the same name and start the new one
                 script {
                     sh '''
-                    docker stop projectpi-frontend || true
-                    docker rm projectpi-frontend || true
-                    docker run -d --name projectpi-frontend --network ProjectPi --restart always -p 81:80 $DOCKER_IMAGE
+                    docker stop blog-frontend || true
+                    docker rm blog-frontend || true
+                    docker run -d --name blog-frontend --network ProjectPi --restart always -p 81:80 $DOCKER_IMAGE
                     '''
                 }
             }
