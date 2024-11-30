@@ -27,5 +27,6 @@ public class UserDto implements Serializable {
     private Boolean accountLocked;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String jwtToken;
 
 }

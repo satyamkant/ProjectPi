@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Set your Docker image name and optionally, your Docker registry
-        DOCKER_IMAGE = 'satyamkant/projectpi-frontend:latest'
+        DOCKER_IMAGE = 'satyamkant/Blog-frontend:latest'
         // Uncomment and set if you are pushing to a Docker registry
         // DOCKER_REGISTRY = "your-docker-registry"
     }
@@ -67,7 +67,7 @@ pipeline {
                     sh '''
                     docker stop projectpi-frontend || true
                     docker rm projectpi-frontend || true
-                    docker run -d --name projectpi-frontend -p 81:80 $DOCKER_IMAGE
+                    docker run -d --name projectpi-frontend --network ProjectPi --restart always -p 81:80 $DOCKER_IMAGE
                     '''
                 }
             }
