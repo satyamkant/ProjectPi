@@ -14,16 +14,17 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
-    public User registerUser(UserDto userDto) throws SatyamPiLogicalException {
+    public UserDto registerUser(UserDto userDto) throws SatyamPiLogicalException {
         if(userRepository.findByEmail(userDto.getEmail()).isPresent()) {
             throw new SatyamPiLogicalException("User Already Exists");
         }
@@ -33,26 +34,33 @@ public class UserServiceImpl implements UserService {
         user.setName(userDto.getName());
         user.setBio(userDto.getBio());
         user.setRole(userDto.getRole());
-        user.setPasswordHash(passwordEncoder.encode(userDto.getPassword()));
+        user.setPasswordHash(bCryptPasswordEncoder.encode(userDto.getPasswordHash()));
         user.setProfilePicturePath(userDto.getProfilePicturePath());
-        return userRepository.save(user);
+        userRepository.save(user);
+        userDto.setPasswordHash(null);
+        return userDto;
     }
 
     @Override
-    public UserDto loginUser(UserDto userDto) throws SatyamPiLogicalException {
+    public UserDto getUserDto(UserDto userDto) throws SatyamPiLogicalException {
         Optional<User> userOptional = userRepository.findByEmail(userDto.getEmail());
         if(userOptional.isEmpty()) {
-            throw new SatyamPiLogicalException("Invalid email or password");
+            throw new SatyamPiLogicalException("User Not Found");
         }
 
         User user = userOptional.get();
-        if(!passwordEncoder.matches(userDto.getPassword(), user.getPasswordHash())) {
-            throw new SatyamPiLogicalException("Invalid email or password");
-        }
 
         UserDto response = new UserDto();
         response.setEmail(user.getEmail());
         response.setRole(user.getRole());
+        response.setPasswordHash(user.getPasswordHash());
+        response.setName(user.getName());
+        response.setBio(user.getBio());
+        response.setProfilePicturePath(user.getProfilePicturePath());
+        response.setCreatedAt(user.getCreatedAt());
+        response.setUpdatedAt(user.getUpdatedAt());
+        response.setIsActive(user.getIsActive());
+        response.setAccountLocked(user.getAccountLocked());
 
         return response;
     }

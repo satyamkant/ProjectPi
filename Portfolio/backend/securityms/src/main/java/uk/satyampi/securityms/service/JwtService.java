@@ -1,15 +1,20 @@
 package uk.satyampi.SecurityMs.service;
 
 import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
+import uk.satyampi.SecurityMs.exception.SatyamPiLogicalException;
 
 import java.util.Map;
 import java.util.function.Function;
 
 public interface JwtService {
-    <T> T extractClaim(String token, Function<Claims, T> claimsResolver);
+    String getJwtFromHeader(HttpServletRequest request);
 
-    String extractUsername(String token);
+    String generateTokenFromUsername(UserDetails userDetails);
 
-    String extractUserEmailFromToken(String token);
+    String getUserNameFromJwtToken(String token);
+
+    boolean validateJwtToken(String authToken) throws SatyamPiLogicalException;
 }

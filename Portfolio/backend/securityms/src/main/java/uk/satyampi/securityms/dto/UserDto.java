@@ -1,7 +1,7 @@
-package uk.satyampi.UserMs.dto;
+package uk.satyampi.SecurityMs.dto;
 
 import lombok.*;
-import uk.satyampi.UserMs.enums.UserRole;
+import uk.satyampi.SecurityMs.enums.UserRole;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto implements Serializable {
-
     private Long userId;
     private String name;
     private String email;

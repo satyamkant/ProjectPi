@@ -22,14 +22,4 @@ public class LoggingAspect {
     public void afterRegisterUser(JoinPoint joinPoint) {
         logger.info("After Registering User");
     }
-
-    @Before("execution(* uk.satyampi.UserMs.service.impl.UserServiceImpl.loginUser(..))")
-    public void beforeLoginUser(JoinPoint joinPoint) {
-        logger.info("Before Login User");
-    }
-
-    @After("execution(* uk.satyampi.UserMs.service.impl.UserServiceImpl.loginUser(..))")
-    public void afterLoginUser(JoinPoint joinPoint) {
-        logger.info("After Login User");
-    }
 }

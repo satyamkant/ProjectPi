@@ -1,6 +1,7 @@
 package uk.satyampi.UserMs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,15 +21,13 @@ public class UserController {
         this.userService = userService;
     }
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserDto userDto) throws SatyamPiLogicalException {
-        userService.registerUser(userDto);
-        return ResponseEntity.ok("User registered successfully");
+    public ResponseEntity<UserDto> register(@RequestBody UserDto userDto) throws SatyamPiLogicalException {
+        return new ResponseEntity<>(userService.registerUser(userDto),HttpStatus.OK);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserDto userDto) throws SatyamPiLogicalException {
-        userService.loginUser(userDto);
-        return ResponseEntity.ok("User logged in successfully");
+    @PostMapping("/getuser")
+    public ResponseEntity<UserDto> login(@RequestBody UserDto userDto) throws SatyamPiLogicalException {
+        return new ResponseEntity<>(userService.getUserDto(userDto), HttpStatus.OK);
     }
 
 }

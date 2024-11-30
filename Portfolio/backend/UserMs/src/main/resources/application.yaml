@@ -6,6 +6,6 @@ spring:
   cloud:
     consul:
       discovery:
-        hostname: host.docker.internal
+        hostname: localhost
       config:
         enabled: true  # Enable Consul configuration management
