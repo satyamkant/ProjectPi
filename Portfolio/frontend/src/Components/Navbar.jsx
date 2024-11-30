@@ -1,6 +1,7 @@
 import logo from "../Resources/Images/favicon.ico"
 import { Link } from "react-router-dom";
 import "./css/Navbar.css"
+import Login from "./Login";
 
 function Navbar(){
     return (
@@ -27,10 +28,14 @@ function Navbar(){
                                 <Link className="nav-link" aria-current="page" to="/blog">Blogs</Link>
                             </li>
                         </ul>
-                        <button className="btn btn-success" >Login</button>
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                            Login
+                        </button>
                     </div>
                 </div>
             </nav>
+            <Login/>
         </header>
     )
 }
