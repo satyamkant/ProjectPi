@@ -7,14 +7,19 @@ WORKDIR /app
 # Copy the pom.xml and other necessary files
 COPY pom.xml ./
 
+# Copy the Maven wrapper files
+COPY .mvn .mvn
+COPY mvnw ./
+
+
 # Download dependencies (This step caches dependencies if the pom.xml hasn't changed)
-RUN mvn dependency:go-offline
+RUN ./mvnw dependency:go-offline
 
 # Copy the entire application source code
 COPY src ./src
 
 # Build the Spring Boot application using Maven (You can also use ./mvnw if Maven Wrapper is used)
-RUN mvn clean package
+RUN ./mvnw clean package
 
 # Use a minimal JRE image for running the application
 FROM openjdk:17-jdk-slim
@@ -23,10 +28,10 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the jar file from the build stage
-COPY --from=build /app/target/your-backend-app-1.0-SNAPSHOT.jar /app/your-backend-app.jar
+COPY --from=build /app/target/UserMs-0.0.1-SNAPSHOT.jar /app/UserMs.jar
 
 # Expose the port the application will run on (adjust according to your app's port)
 EXPOSE 2003
 
 # Run the application
-CMD ["java", "-jar", "/app/your-backend-app.jar"]
+CMD ["java", "-jar", "/app/UserMs.jar"]
