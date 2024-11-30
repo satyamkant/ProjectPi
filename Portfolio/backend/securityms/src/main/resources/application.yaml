@@ -2,7 +2,7 @@ spring:
   application:
     name: SecurityMs
   config:
-    import: consul://consul:8500/SecurityMs-Dev/application # Specifies that configuration should be loaded from Consul
+    import: consul://casalocal.com:8500/SecurityMs-Dev/application # Specifies that configuration should be loaded from Consul
   cloud:
     consul:
       discovery:
