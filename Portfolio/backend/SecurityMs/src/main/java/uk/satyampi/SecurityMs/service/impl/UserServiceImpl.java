@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
             userDto = responseEntity.getBody();
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
 
