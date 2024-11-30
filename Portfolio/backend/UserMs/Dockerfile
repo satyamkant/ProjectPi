@@ -8,13 +8,13 @@ WORKDIR /app
 COPY pom.xml ./
 
 # Download dependencies (This step caches dependencies if the pom.xml hasn't changed)
-RUN ./mvnw dependency:go-offline
+RUN mvn dependency:go-offline
 
 # Copy the entire application source code
 COPY src ./src
 
 # Build the Spring Boot application using Maven (You can also use ./mvnw if Maven Wrapper is used)
-RUN ./mvnw clean package
+RUN mvn clean package
 
 # Use a minimal JRE image for running the application
 FROM openjdk:17-jdk-slim
