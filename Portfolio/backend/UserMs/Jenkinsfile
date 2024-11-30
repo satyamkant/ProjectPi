@@ -19,7 +19,7 @@ pipeline {
                 echo 'Building Spring Boot application with Maven...'
                 // Run Maven clean and package to build the Spring Boot application
                 script {
-                    dir('Portfolio/backend') {
+                    dir('Portfolio/backend/UserMs') {
                         sh 'mvn clean package'  // Clean and package without running tests
                     }
                 }
