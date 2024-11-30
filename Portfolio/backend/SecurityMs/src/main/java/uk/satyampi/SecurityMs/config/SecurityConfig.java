@@ -46,11 +46,7 @@ public class SecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request ->request
-                        .requestMatchers(new AntPathRequestMatcher("/security/login"))
-                        .permitAll()
-                        .requestMatchers("/security/register")
-                        .permitAll()
-                        .requestMatchers("/actuator/health")
+                        .requestMatchers("/security/register","/actuator/health","/security/login")
                         .permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/security/admin"))
                         .hasRole("ADMIN")
