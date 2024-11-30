@@ -101,8 +101,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version> <!-- Use the appropriate version -->
 				<configuration>
-					<source>23</source> <!-- Java version -->
-					<target>23</target> <!-- Java version -->
+					<source>17</source> <!-- Java version -->
+					<target>17</target> <!-- Java version -->
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>
@@ -111,6 +111,11 @@
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
+			</plugin>
+			<!-- Spring Boot Maven plugin to create an executable JAR -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
