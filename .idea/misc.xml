@@ -12,12 +12,8 @@
         <option value="$PROJECT_DIR$/Portfolio/backend/BlogMs/pom.xml" />
         <option value="$PROJECT_DIR$/Portfolio/backend/UserMs/pom.xml" />
         <option value="$PROJECT_DIR$/Portfolio/backend/securityms/pom.xml" />
-      </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
         <option value="$PROJECT_DIR$/Portfolio/backend/SecurityMs/pom.xml" />
-      </set>
+      </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">

@@ -28,6 +28,7 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
+        <module name="SecurityMs" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="23">
@@ -37,6 +38,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BlogMs" options="-parameters" />
+      <module name="SecurityMs" options="-parameters" />
       <module name="UserMs" options="-parameters" />
       <module name="compilems" options="-parameters" />
       <module name="homems" options="-parameters" />
