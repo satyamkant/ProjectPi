@@ -1,14 +1,16 @@
 # Use the official Node.js image to build the app.
-FROM node:20 AS build
+FROM node:20-slim AS build
 
 # Set working directory.
 WORKDIR /app
 
 # Install dependencies.
 COPY package*.json ./
-RUN npm install
 
-# Copy the rest of the application code.
+# Install dependencies without unnecessary optional dependencies
+RUN npm install --production --legacy-peer-deps
+
+# Copy only the necessary application code (instead of copying everything)
 COPY . .
 
 # Build the app.
@@ -19,7 +21,8 @@ FROM nginx:alpine
 
 # Copy build files from the previous stage.
 COPY --from=build /app/build /usr/share/nginx/html
-# Copy the custom Nginx configuration file
+
+# Copy the custom Nginx configuration file (if needed)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80.
