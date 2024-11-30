@@ -1,5 +1,7 @@
 package uk.satyampi.SecurityMs.service.impl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +17,8 @@ import uk.satyampi.SecurityMs.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
     private final RestTemplate restTemplate;
 
     @Autowired
@@ -24,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        logger.info("entering loadUserByUsername: ");
         String userServiceUrl = "http://UserMs/user/getuser";
 
         // Set HTTP headers (if needed, e.g., Authorization)
@@ -50,7 +55,7 @@ public class UserServiceImpl implements UserService {
             userDto = responseEntity.getBody();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
             throw new RuntimeException(e);
         }
 
