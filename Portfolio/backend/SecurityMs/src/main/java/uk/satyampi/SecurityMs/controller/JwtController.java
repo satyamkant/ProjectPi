@@ -34,8 +34,8 @@ public class JwtController {
         cookie.setHttpOnly(true);  // Make sure it's HttpOnly
         cookie.setSecure(true);    // Make sure it's Secure (use in production)
         cookie.setPath("/");       // The path where the cookie is valid
-        cookie.setMaxAge(3600);
-        cookie.setDomain("casalocal.com");// Set cookie expiration time (in seconds)
+        cookie.setMaxAge(3600);     // Set cookie expiration time (in seconds)
+        cookie.setDomain("satyampi.uk");
 
         response.addCookie(cookie);  // Add cookie to response
         return new ResponseEntity<>("Login Successful",HttpStatus.OK);

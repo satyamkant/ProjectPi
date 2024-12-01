@@ -47,7 +47,6 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request ->request
                         .requestMatchers("/security/register","/actuator/health","/security/login")
-//                        .requestMatchers(new AntPathRequestMatcher("/security/login"))
                         .permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/security/admin"))
                         .hasRole("ADMIN")
@@ -74,7 +73,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Allow your frontend origin
+        configuration.setAllowedOrigins(List.of("http://localhost:3000","https://www.satyampi.uk")); // Allow your frontend origin
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // HTTP methods
         configuration.setAllowedHeaders(List.of("*")); // Allow all headers
         configuration.setAllowCredentials(true); // Allow credentials (cookies, auth headers, etc.)
