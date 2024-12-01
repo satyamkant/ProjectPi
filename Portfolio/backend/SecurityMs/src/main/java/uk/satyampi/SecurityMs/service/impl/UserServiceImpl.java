@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.info("entering loadUserByUsername: ");
         String userServiceUrl = "http://UserMs/user/getuser";
 
         // Set HTTP headers (if needed, e.g., Authorization)

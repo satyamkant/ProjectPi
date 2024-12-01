@@ -10,6 +10,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import uk.satyampi.SecurityMs.dto.UserDto;
+import uk.satyampi.SecurityMs.exception.SatyamPiLogicalException;
 import uk.satyampi.SecurityMs.service.JwtService;
 
 @RestController
@@ -63,16 +64,13 @@ public class JwtController {
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             // Specific exception handling for HTTP errors
             String errorResponse = e.getResponseBodyAsString();
-            return ResponseEntity.status(e.getStatusCode())
-                    .body("HTTP Error: " + errorResponse);
+            throw new SatyamPiLogicalException("Http exception",e);
         } catch (ResourceAccessException e) {
             // Handle network or connection issues (e.g., service down)
-            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                    .body("Service is unavailable. Please try again later.");
+            throw new SatyamPiLogicalException("Server not available",e);
         } catch (Exception e) {
             // General exception handling
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error during registration: " + e.getMessage());
+            throw new SatyamPiLogicalException("Internal server error",e);
         }
     }
 
