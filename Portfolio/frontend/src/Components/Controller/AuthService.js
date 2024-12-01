@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 
-const API_BASE_URL = 'http://BlogSecurityMs:2000'; // Replace with your backend URL
+const API_BASE_URL = 'https://blogsecurity.satyampi.uk'; // Replace with your backend URL
 
 // Configure Axios instance
 const axiosInstance = axios.create({
