@@ -32,6 +32,6 @@ public class LoggingAspect {
 
     @AfterThrowing(pointcut = "userServiceMethods()", throwing = "exception")
     public void handleUserServiceException(Exception exception) {
-        logger.error("Exception occurred in JwtServiceImpl: {}", exception.getMessage(), exception);
+        logger.error("Exception occurred in userServiceImpl: {}", exception.getMessage(), exception);
     }
 }

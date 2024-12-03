@@ -1,6 +1,7 @@
 package uk.satyampi.SecurityMs.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,15 +17,16 @@ import uk.satyampi.SecurityMs.service.UserService;
 public class UserServiceImpl implements UserService {
 
     private final RestTemplate restTemplate;
+    private final String USER_DB_URL_GET_USER;
 
     @Autowired
-    public UserServiceImpl(RestTemplate restTemplate) {
+    public UserServiceImpl(RestTemplate restTemplate,@Value("${USER_DB_URL_GET_USER}") String userDbUrlGetUser) {
         this.restTemplate = restTemplate;
+        USER_DB_URL_GET_USER = userDbUrlGetUser;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String userServiceUrl = "http://UserMs/user/getuser";
 
         // Set HTTP headers (if needed, e.g., Authorization)
         HttpHeaders headers = new HttpHeaders();
@@ -41,7 +43,7 @@ public class UserServiceImpl implements UserService {
         try {
             // Make the REST call
             ResponseEntity<UserDto> responseEntity = restTemplate.exchange(
-                    userServiceUrl,
+                    USER_DB_URL_GET_USER,
                     HttpMethod.POST,
                     requestEntity,
                     UserDto.class

@@ -3,6 +3,7 @@ package uk.satyampi.SecurityMs.controller;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,11 +20,13 @@ public class JwtController {
 
     private final RestTemplate restTemplate;
     private final JwtService jwtService;
+    private final String USER_DB_URL_REGISTER_USER;
 
     @Autowired
-    public JwtController(RestTemplate restTemplate, JwtService jwtService) {
+    public JwtController(RestTemplate restTemplate, JwtService jwtService,@Value("${USER_DB_URL_REGISTER_USER}") String userDbUrlRegisterUser) {
         this.restTemplate = restTemplate;
         this.jwtService = jwtService;
+        USER_DB_URL_REGISTER_USER = userDbUrlRegisterUser;
     }
 
     @PostMapping("/login")
@@ -44,7 +47,6 @@ public class JwtController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserDto userDto) throws Exception {
-        String userServiceUrl = "http://UserMs/user/register";
 
         // Set HTTP headers (if needed, e.g., Authorization)
         HttpHeaders headers = new HttpHeaders();
@@ -56,7 +58,7 @@ public class JwtController {
             // Make the REST call
 
             return restTemplate.exchange(
-                    userServiceUrl,
+                    USER_DB_URL_REGISTER_USER,
                     HttpMethod.POST,
                     requestEntity,
                     UserDto.class
