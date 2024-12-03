@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="compilems" />
         <module name="BlogMs" />
-        <module name="homems" />
       </profile>
       <profile name="Annotation profile for UserMs" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -32,6 +31,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="23">
+      <module name="homems" target="23" />
       <module name="securityms" target="17" />
     </bytecodeTargetLevel>
   </component>
