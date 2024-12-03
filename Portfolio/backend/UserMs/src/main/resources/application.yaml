@@ -2,10 +2,11 @@ spring:
   application:
     name: UserMs
   config:
-    import: consul://consul:8500/UserMs-Dev/application # Specifies that configuration should be loaded from Consul
+    import: consul://consul:8500/config/UserMs
   cloud:
     consul:
-      discovery:
-        hostname: BlogUserMs
       config:
-        enabled: true  # Enable Consul configuration management
+        enabled: true
+        format: YAML
+      discovery:
+        enabled: true
