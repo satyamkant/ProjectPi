@@ -1,5 +1,6 @@
 package uk.satyampi.UserMs.service.impl;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import uk.satyampi.UserMs.service.UserService;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
@@ -33,11 +35,10 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userDto.getEmail());
         user.setName(userDto.getName());
         user.setBio(userDto.getBio());
-        user.setRole(userDto.getRole());
         user.setPasswordHash(bCryptPasswordEncoder.encode(userDto.getPasswordHash()));
         user.setProfilePicturePath(userDto.getProfilePicturePath());
         userRepository.save(user);
-        userDto.setPasswordHash(null);
+        userDto.setPasswordHash("");
         return userDto;
     }
 
