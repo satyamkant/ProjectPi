@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
+import uk.satyampi.SecurityMs.exception.SatyamPiLogicalException;
 
 import java.util.Arrays;
 
@@ -20,11 +21,11 @@ public class LoggingAspect {
 
     // Pointcut for all methods in UserServiceImpl
     @Pointcut("execution(* uk.satyampi.SecurityMs.service.impl.UserServiceImpl.*(..))")
-    public void UserServiceMethods() {
+    public void userServiceMethods() {
     }
 
     // Log method entry
-    @Before("jwtServiceMethods()")
+    @Before("userServiceMethods()")
     public void userServiceMethodEntry(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
@@ -33,9 +34,10 @@ public class LoggingAspect {
     }
 
     // Handle exceptions thrown by UserServiceImpl methods
-    @AfterThrowing(pointcut = "jwtServiceMethods()", throwing = "exception")
-    public void handleUserServiceException(Exception exception) {
+    @AfterThrowing(pointcut = "userServiceMethods()", throwing = "exception")
+    public void handleUserServiceException(Exception exception) throws SatyamPiLogicalException {
         logger.error("Exception occurred in UserServiceImpl: {}", exception.getMessage(), exception);
+        throw new SatyamPiLogicalException(exception.getMessage(), exception);
     }
 
 
@@ -59,8 +61,9 @@ public class LoggingAspect {
 
     // Handle exceptions thrown by JwtServiceImpl methods
     @AfterThrowing(pointcut = "jwtServiceMethods()", throwing = "exception")
-    public void handleJwtServiceException(Exception exception) {
+    public void handleJwtServiceException(Exception exception) throws SatyamPiLogicalException {
         logger.error("Exception occurred in JwtServiceImpl: {}", exception.getMessage(), exception);
+        throw new SatyamPiLogicalException(exception.getMessage(),exception);
     }
 
 }

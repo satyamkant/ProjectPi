@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
+import uk.satyampi.SecurityMs.dto.UserDetails;
 import uk.satyampi.SecurityMs.dto.UserDto;
 import uk.satyampi.SecurityMs.exception.SatyamPiLogicalException;
 import uk.satyampi.SecurityMs.service.JwtService;
@@ -18,13 +20,13 @@ import uk.satyampi.SecurityMs.service.JwtService;
 import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class JwtServiceImpl implements JwtService {
 
     private final String  SECRET_KEY;
-    private final int EXPIRATION_TIME;
-
+    private final long EXPIRATION_TIME;
     private final AuthenticationManager authenticationManager;
 
     private Key key() {
@@ -32,19 +34,26 @@ public class JwtServiceImpl implements JwtService {
     }
 
     @Autowired
-    public JwtServiceImpl(@Value("${SECRET_KEY}") String secretKey,@Value("${EXPIRATION_TIME}")int jwtExpirationMs,AuthenticationManager authenticationManager) {
+    public JwtServiceImpl(@Value("${SECRET_KEY}") String secretKey,
+                          @Value("${EXPIRATION_TIME}")long jwtExpirationMs,
+                          AuthenticationManager authenticationManager) {
         this.SECRET_KEY = secretKey;
         this.EXPIRATION_TIME = jwtExpirationMs;
         this.authenticationManager = authenticationManager;
     }
 
     @Override
-    public UserDto verifyUser(UserDto userDto) {
-
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDto.getEmail(), userDto.getPasswordHash()));
-        if(authentication.isAuthenticated()){
-            userDto.setJwtToken(generateTokenFromUsername(userDto));
-            return userDto;
+    public UserDto verifyUser(UserDto userDto) throws SatyamPiLogicalException {
+        try {
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDto.getEmail(), userDto.getPasswordHash()));
+            if (authentication.isAuthenticated()) {
+                userDto.setName(((UserDetails)authentication.getPrincipal()).getUserName());
+                userDto.setJwtToken(generateTokenFromUsername(userDto));
+                return userDto;
+            }
+        }
+        catch (AuthenticationException e) {
+            throw new SatyamPiLogicalException(e.getMessage(), e);
         }
         return null;
     }
@@ -66,9 +75,9 @@ public class JwtServiceImpl implements JwtService {
     public String generateTokenFromUsername(UserDto userDto) {
         return Jwts.builder()
                 .subject(userDto.getEmail())
-                .claim("role", userDto.getRole())
+                .claim("userName", userDto.getName())
                 .issuedAt(new Date())
-                .expiration(new Date((new Date()).getTime() + EXPIRATION_TIME))
+                .expiration(new Date((new Date()).getTime() + TimeUnit.HOURS.toMillis(EXPIRATION_TIME)))
                 .signWith(key())
                 .compact();
     }
@@ -83,12 +92,13 @@ public class JwtServiceImpl implements JwtService {
                 .getSubject();
     }
 
+    @Override
     public String getClaimFromJwtToken(String token) {
         return Jwts.parser()
                 .verifyWith((SecretKey) key())
                 .build()
                 .parseSignedClaims(token)
-                .getPayload().get("role", String.class);
+                .getPayload().get("userName", String.class);
     }
 
 

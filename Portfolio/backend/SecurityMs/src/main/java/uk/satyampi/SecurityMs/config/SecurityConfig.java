@@ -48,8 +48,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request ->request
                         .requestMatchers("/security/register","/actuator/health","/security/login")
                         .permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/security/admin"))
-                        .hasRole("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/security/isAuthenticated"))
+                        .hasAnyRole("ADMIN","AUTHOR", "READER")
                         .anyRequest()
                         .authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

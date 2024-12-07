@@ -14,6 +14,10 @@ public class UserDetails implements org.springframework.security.core.userdetail
         this.userDto = userDto;
     }
 
+    public String getUserName(){
+      return userDto.getName();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + userDto.getRole().name()));

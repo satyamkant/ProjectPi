@@ -6,7 +6,7 @@ import uk.satyampi.SecurityMs.exception.SatyamPiLogicalException;
 
 
 public interface JwtService {
-    UserDto verifyUser(UserDto userDto);
+    UserDto verifyUser(UserDto userDto) throws SatyamPiLogicalException;
 
     String getJwtFromHeader(HttpServletRequest request);
 
@@ -15,4 +15,6 @@ public interface JwtService {
     String getUserNameFromJwtToken(String token);
 
     boolean validateJwtToken(String authToken) throws SatyamPiLogicalException;
+
+    String getClaimFromJwtToken(String token);
 }
