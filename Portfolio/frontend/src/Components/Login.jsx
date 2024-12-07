@@ -1,7 +1,8 @@
 import AuthService from "./Controller/AuthService";
 import {useState} from "react";
 
-function Login(){
+
+function Login({onLoginSuccess}){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -9,14 +10,18 @@ function Login(){
     const handleSubmit = async (event) => {
         event.preventDefault();
         const response = await AuthService.LoginService(email, password);
-        console.log(response);
+
+        onLoginSuccess(response);
+        if(response.status === 200){
+            // Programmatically trigger the "Close" button click
+            const closeButton = document.querySelector('[data-bs-dismiss="modal"]');
+            if (closeButton) {
+                closeButton.click();
+            }
+        }
     };
 
-    const handleAdminTest = async (event) => {
-        event.preventDefault();
-        const response = await AuthService.AdminTestService();
-        console.log(response);
-    }
+
 
     return (
         <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
@@ -24,7 +29,7 @@ function Login(){
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+                        <h1 className="modal-title fs-5 lead" id="staticBackdropLabel">Login</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -45,7 +50,6 @@ function Login(){
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" className="btn btn-primary" onClick={handleAdminTest}>AdminTestButton</button>
                         <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>

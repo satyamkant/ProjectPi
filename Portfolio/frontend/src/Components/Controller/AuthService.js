@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 
 const API_BASE_URL = 'https://blogsecurity.satyampi.uk'; // Replace with your backend URL
@@ -22,31 +21,35 @@ const AuthService = {
 
         try {
             // Send POST request with the JSON body
-            console.log("login request");
-            const response = await axiosInstance.post("/security/login",requestData, {
-            });
-
             // Return the response data
-            return response.data;
+            return await axiosInstance.post("/security/login", requestData, {});
         } catch (error) {
-            console.error('Error executing code:', error);
-            return { output: '', error: error.message, executionTime: 0 };
+            return error.response;
         }
     },
 
     AdminTestService : async () => {
         try {
             // Send POST request with the JSON body
-            console.log("AdminTestService called");
             const response = await axiosInstance.get("/security/admin", {
             });
 
             // Return the response data
             return response.data;
         } catch (error) {
-            console.error('Error executing code:', error);
-            return { output: '', error: error.message, executionTime: 0 };
+            return error.response;
         }
+    },
+
+    IsAuthenticatedService : async () =>{
+         try{
+             const response = await axiosInstance.get("/security/isAuthenticated", {
+             });
+
+             return response.data;
+         }catch(error){
+             return error.response;
+         }
     }
 
 }
