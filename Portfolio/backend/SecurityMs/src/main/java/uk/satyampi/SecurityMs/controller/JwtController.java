@@ -122,11 +122,4 @@ public class JwtController {
 
         return new  ResponseEntity<>(responseDto, HttpStatus.OK);
     }
-
-    @GetMapping("/admin")
-    public ResponseEntity<?> adminTest() {
-        ResponseDto responseDto = new ResponseDto();
-        responseDto.setMessage("Admin test successful");
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
-    }
 }
