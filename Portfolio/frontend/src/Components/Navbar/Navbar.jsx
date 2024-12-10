@@ -24,7 +24,6 @@ function Navbar({isAuthenticated,name, onAutheChange}){
                 window.location.href = "/";
             }
        })
-
     };
 
     return (
@@ -45,7 +44,7 @@ function Navbar({isAuthenticated,name, onAutheChange}){
                                 <NavLink className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} aria-current="page" to="/home">Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} aria-current="page" to="">Projects</NavLink>
+                                <NavLink className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} aria-current="page" to="/project">Projects</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} aria-current="page" to="/blog">Blogs</NavLink>

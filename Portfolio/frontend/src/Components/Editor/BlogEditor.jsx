@@ -113,9 +113,11 @@ export default function BlogEditor() {
             <div className="col-md-6">
                 <div className="card">
                     <h5 className="card-header">Preview</h5>
-                    <div className="my-editor card-body">
-                        <h1 id="blog-title" className="card-title">{blogTitle}</h1>
-                        <div dangerouslySetInnerHTML={{ __html: html }} />
+                    <div className="card-body">
+                        <div className="my-editor editor-container">
+                            <h1 id="blog-title" className="card-title">{blogTitle}</h1>
+                            <div dangerouslySetInnerHTML={{__html: html}}/>
+                        </div>
                     </div>
                 </div>
             </div>

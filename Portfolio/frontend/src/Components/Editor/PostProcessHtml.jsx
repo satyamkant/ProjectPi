@@ -28,6 +28,19 @@ function postProcessHtml(htmlString) {
         pre.replaceWith(code);
     });
 
+    /// replacing pre-wrap to pre in childs of the code element
+    doc.querySelectorAll("code").forEach((codeElement) => {
+        // Iterate over child elements of <code>
+        codeElement.querySelectorAll("[style]").forEach((child) => {
+            const style = child.getAttribute("style");
+            if (style.includes("white-space: pre-wrap;")) {
+                const updatedStyle = style.replace("white-space: pre-wrap;", "white-space: pre;");
+                child.setAttribute("style", updatedStyle);
+            }
+        });
+    });
+
+
     // Serialize the modified DOM back to HTML
     return doc.body.innerHTML;
 }
