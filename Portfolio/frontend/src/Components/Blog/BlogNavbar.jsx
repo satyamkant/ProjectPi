@@ -4,24 +4,18 @@ import data from "../../DAO/portfolio.json"
 
 function BlogNavbar() {
     return (
-        <div className="blogNavbar">
-            <nav className="navbar blog-navbar navbar-dark navbar-expand-md">
-                <div className="container-fluid">
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        {/*<span className="navbar-toggler-icon"></span>*/}
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mx-auto">
-                            {data.topics.map((topic, index) => (
-                                <li className="nav-item" key={index}>
-                                    <Link className="nav-link" to={topic.link}>{topic.name}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+        <div className="nav-scroller bg-body shadow-sm">
+            <nav className="nav" aria-label="Secondary navigation">
+                <Link className="nav-link" aria-current="page" to="/">Dashboard</Link>
+                <Link className="nav-link" to="/">
+                    Friends
+                    <span className="badge text-bg-light rounded-pill align-text-bottom">27</span>
+                </Link>
+                <Link className="nav-link" to="/">Explore</Link>
+                <Link className="nav-link" to="/">Suggestions</Link>
+                <Link className="nav-link" to="/">Link</Link>
+                <Link className="nav-link" to="/">Link</Link>
+
             </nav>
         </div>
     );

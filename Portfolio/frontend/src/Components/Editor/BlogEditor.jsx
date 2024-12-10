@@ -106,7 +106,7 @@ export default function BlogEditor() {
                             <ActionsPlugin/>
                         </div>
 
-                        <button type="button" className="btn btn-success" onClick={onClick}>Submit</button>
+                        <button type="button" className="btn btn-success my-2" onClick={onClick}>Submit</button>
                     </div>
                 </div>
             </div>

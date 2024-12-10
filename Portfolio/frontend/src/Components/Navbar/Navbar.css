@@ -24,3 +24,7 @@
     color: black; /* Optional: keep text color consistent on hover */
     border-radius: 5px;
 }
+
+.nav-link.active {
+    font-weight: bold;
+}

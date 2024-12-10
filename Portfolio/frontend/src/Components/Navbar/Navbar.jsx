@@ -1,5 +1,5 @@
 import logo from "../../Resources/Images/favicon.ico"
-import { Link } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import "./Navbar.css"
 import Login from "../Login/Login";
 import {useState} from "react";
@@ -40,45 +40,50 @@ function Navbar({isAuthenticated,name, onAutheChange}){
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mx-auto">
+                        <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/home">Home</Link>
+                                <NavLink className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} aria-current="page" to="/home">Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="#">Projects</Link>
+                                <NavLink className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} aria-current="page" to="">Projects</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/blog">Blogs</Link>
+                                <NavLink className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} aria-current="page" to="/blog">Blogs</NavLink>
                             </li>
                         </ul>
-                        {isAuthenticated ?
-                            (
+                        <div className="ms-auto">
+                            {isAuthenticated ?
+                                (
 
-                                <ul className="navbar-nav">
-                                    <li className="nav-item dropdown">
-                                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                           role="button" data-bs-toggle="dropdown" aria-expanded="false"> Hi {userName}!
-                                        </a>
-                                        <ul className="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="navbarDropdown">
-                                            <li><a className="dropdown-item" href="#">Profile</a></li>
-                                            <li><a className="dropdown-item" href="#">Editor</a></li>
-                                            <li>
-                                                <hr className="dropdown-divider"/>
-                                            </li>
-                                            <li><a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            )
-                            :
-                            (
-                                <button type="button" className="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop">
-                                    Login
-                                </button>
-                            )}
+                                    <ul className="navbar-nav">
+                                        <li className="nav-item dropdown">
+                                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                               role="button" data-bs-toggle="dropdown"
+                                               aria-expanded="false"> Hi {userName}!
+                                            </a>
+                                            <ul className="dropdown-menu dropdown-menu-end"
+                                                aria-labelledby="navbarDropdown">
+                                                <li><Link className="dropdown-item" to="/dashboard">Profile</Link></li>
+                                                <li><Link className="dropdown-item" to="#">Editor</Link></li>
+                                                <li>
+                                                    <hr className="dropdown-divider"/>
+                                                </li>
+                                                <li><a className="dropdown-item" href="#"
+                                                       onClick={handleLogout}>Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                )
+                                :
+                                (
+                                    <button type="button" className="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop">
+                                        Login
+                                    </button>
+                                )}
+                        </div>
                     </div>
+
                 </div>
             </nav>
             <Login onLoginSuccess={handleLoginSuccess}/>

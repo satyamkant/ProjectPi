@@ -7,6 +7,7 @@ import BlogHome from "./Components/Blog/BlogHome";
 import {useEffect, useState} from "react";
 import AuthService from "./Components/Controller/AuthService";
 import LoadingScreen from "./Components/LoadingScreen/LoadingScreen";
+import UserDashboard from "./Components/Dashboard/UserDashboard";
 
 
 function App() {
@@ -43,15 +44,16 @@ function App() {
 
   return (
       <Router>
-        <div className="App">
-            <Navbar isAuthenticated={isAuthenticated} name={name} onAutheChange={toggleIsAuthenticated} />
-            <Routes>
-                <Route path="/" element={<Navigate to="/home" />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/blog" element={<BlogHome />} />
-            </Routes>
-            <Footer/>
-        </div>
+          <div className="App">
+                <Navbar isAuthenticated={isAuthenticated} name={name} onAutheChange={toggleIsAuthenticated} />
+                <Routes>
+                    <Route path="/" element={<Navigate to="/home" />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/blog" element={<BlogHome />} />
+                    <Route path="/dashboard" element={<UserDashboard/>}/>
+                </Routes>
+                <Footer/>
+          </div>
       </Router>
   );
 }

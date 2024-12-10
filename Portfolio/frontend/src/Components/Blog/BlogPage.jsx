@@ -3,7 +3,7 @@ import MyEditor from "../Editor/MyEditor";
 
 function BlogPage() {
     return (
-       <MyEditor/>
+       <></>
    )
 }
 
