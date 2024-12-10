@@ -68,6 +68,24 @@ public class JwtController {
         return new ResponseEntity<>(responseDto,HttpStatus.OK);
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletResponse response) {
+        // Create a cookie with the JWT token
+        String jwtToken = "";
+        Cookie cookie = new Cookie("jwtToken", jwtToken);
+        cookie.setHttpOnly(true);  // Make sure it's HttpOnly
+        cookie.setSecure(true);    // Make sure it's Secure (use in production)
+        cookie.setPath("/");       // The path where the cookie is valid
+        cookie.setMaxAge(0); // Set cookie expiration time (in seconds)
+        cookie.setDomain(DOMAIN);
+        response.addCookie(cookie); // Add cookie to response
+        ResponseDto responseDto = new ResponseDto();
+
+        responseDto.setMessage("Successfully Logged out");
+
+        return new ResponseEntity<>(responseDto,HttpStatus.OK);
+    }
+
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Validated UserDto userDto) throws Exception {
 
