@@ -62,7 +62,7 @@ function Navbar({isAuthenticated,name, onAutheChange}){
                                             </a>
                                             <ul className="dropdown-menu dropdown-menu-end"
                                                 aria-labelledby="navbarDropdown">
-                                                <li><Link className="dropdown-item" to="/dashboard">Profile</Link></li>
+                                                <li><Link className="dropdown-item" to={`/${userName}/dashboard`}>Profile</Link></li>
                                                 <li><Link className="dropdown-item" to="#">Editor</Link></li>
                                                 <li>
                                                     <hr className="dropdown-divider"/>

@@ -1,20 +1,19 @@
 import "./css/BlogNavbar.css"
 import {Link} from "react-router-dom";
-import data from "../../DAO/portfolio.json"
 
 function BlogNavbar() {
     return (
         <div className="nav-scroller bg-body shadow-sm">
-            <nav className="nav" aria-label="Secondary navigation">
-                <Link className="nav-link" aria-current="page" to="/">Dashboard</Link>
-                <Link className="nav-link" to="/">
-                    Friends
-                    <span className="badge text-bg-light rounded-pill align-text-bottom">27</span>
-                </Link>
-                <Link className="nav-link" to="/">Explore</Link>
-                <Link className="nav-link" to="/">Suggestions</Link>
-                <Link className="nav-link" to="/">Link</Link>
-                <Link className="nav-link" to="/">Link</Link>
+            <nav className="nav py-1" aria-label="Secondary navigation">
+                <Link className="nav-link" to="/">Intro</Link>
+                <Link className="nav-link" to="/">Codeforces</Link>
+                <Link className="nav-link" to="/">Codechef</Link>
+                <Link className="nav-link" to="/">Leetcode</Link>
+                <Link className="nav-link" to="/">Atcoder</Link>
+                <Link className="nav-link" to="/">Graphs</Link>
+                <Link className="nav-link" to="/">Trees</Link>
+                <Link className="nav-link" to="/">Advanced Data Structures</Link>
+                <Link className="nav-link" to="/">Gaming</Link>
 
             </nav>
         </div>

@@ -1,20 +1,29 @@
 import "./UserDashboard.scss"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import MyEditor from "../Editor/MyEditor";
 
 function UserDashboard(){
 
     const [dashboardData, setDashboardData] = useState(null);
+    const [activeTab, setActiveTab] = useState("dashboard");
 
     const handleClick = (e) => {
         switch(e.target.id){
             case "dashboard":
+                setActiveTab("dashboard");
                 setDashboardData(dashboard)
                 break;
             case "publish-blog":
+                setActiveTab("publish-blog");
                 setDashboardData( <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4"><MyEditor/></main>)
         }
     }
+
+    // The first tab is set to dashboard
+    // when the component mounts the dashboard data is set
+    useEffect(() => {
+        setDashboardData(dashboard)
+    },[])
 
     const dashboard = (
         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -141,7 +150,9 @@ function UserDashboard(){
                             <div className="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
-                                        <a id="dashboard" className="nav-link d-flex align-items-center gap-2"
+                                        <a id="dashboard" className={`nav-link d-flex align-items-center gap-2 ${
+                                            activeTab === "dashboard" ? "active" : ""
+                                        }`}
                                            aria-current="page" href="#" onClick={handleClick}>
                                             <svg className="bi">
                                                 <use xlinkHref="#house-fill"></use>
@@ -166,7 +177,10 @@ function UserDashboard(){
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a id="publish-blog" className="nav-link d-flex align-items-center gap-2" href="#" onClick={handleClick}>
+                                        <a id="publish-blog" className={`nav-link d-flex align-items-center gap-2 ${
+                                            activeTab === "publish-blog" ? "active" : ""
+                                        }`}
+                                           href="#" onClick={handleClick}>
                                             <svg className="bi">
                                                 <use xlinkHref="#blog-publish"></use>
                                             </svg>

@@ -50,7 +50,10 @@ function App() {
                     <Route path="/" element={<Navigate to="/home" />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/blog" element={<BlogHome />} />
-                    <Route path="/dashboard" element={<UserDashboard/>}/>
+                    <Route
+                        path="/:usernameId/dashboard"
+                        element={isAuthenticated? <UserDashboard/>: <Navigate to="/home" />}
+                    />
                 </Routes>
                 <Footer/>
           </div>
