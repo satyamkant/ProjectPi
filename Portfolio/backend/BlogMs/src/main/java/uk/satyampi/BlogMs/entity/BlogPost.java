@@ -5,12 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import uk.satyampi.BlogMs.dto.BlogDTO;
 import uk.satyampi.BlogMs.enums.BlogType;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Blog_Post")
+@Table(name = "Blog_Post", indexes = {@Index(name = "idx_blog_title", columnList = "Title")})
 @Getter
 @Setter
 @ToString
@@ -25,7 +26,7 @@ public class BlogPost {
     @Enumerated(EnumType.STRING)
     private BlogType blogType;
 
-    @Column(name = "Title", nullable = false)
+    @Column(name = "Title", nullable = false,unique = true)
     private String title;
 
     @Column(name = "Slug", nullable = false, unique = true)
@@ -45,6 +46,18 @@ public class BlogPost {
 
     @OneToOne(mappedBy = "blogPost", cascade = CascadeType.ALL, orphanRemoval = true)
     private BlogContent blogContent;
+
+    public void convertToEntity(BlogDTO blogDTO){
+        blogType = blogDTO.getBlogType();
+        title = blogDTO.getTitle();
+        slug = blogDTO.getSlug();
+        dateUpdated = LocalDateTime.now();;
+        publishedStatus = blogDTO.isPublishedStatus();
+        authorId = blogDTO.getAuthorId();
+
+        blogContent = new BlogContent();
+        blogContent.convertToEntity(blogDTO.getBlogContentDTO());
+    }
 
     // Getters and Setters
 }

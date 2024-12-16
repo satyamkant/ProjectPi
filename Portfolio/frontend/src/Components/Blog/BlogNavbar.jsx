@@ -14,7 +14,6 @@ function BlogNavbar() {
                 <Link className="nav-link" to="/">Trees</Link>
                 <Link className="nav-link" to="/">Advanced Data Structures</Link>
                 <Link className="nav-link" to="/">Gaming</Link>
-
             </nav>
         </div>
     );
